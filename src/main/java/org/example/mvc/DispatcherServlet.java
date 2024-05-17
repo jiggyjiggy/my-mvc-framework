@@ -8,10 +8,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.mvc.controller.Controller;
 import org.example.mvc.controller.RequestMethod;
+import org.example.mvc.view.JspViewResolver;
+import org.example.mvc.view.View;
+import org.example.mvc.view.ViewResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/")
 public class DispatcherServlet extends HttpServlet {
@@ -19,12 +25,16 @@ public class DispatcherServlet extends HttpServlet {
 
     private RequestMappingHandlerMapping rmhm;
 
+    private List<ViewResolver> viewResolvers;
+
     @Override
     public void init() throws ServletException {
         log.info("[DispatcherServlet] init started");
 
         rmhm = new RequestMappingHandlerMapping();
         rmhm.init();
+
+        viewResolvers = Collections.singletonList(new JspViewResolver());
     }
 
     @Override
@@ -35,8 +45,10 @@ public class DispatcherServlet extends HttpServlet {
             String viewName = handler.handleRequest(request, response);
             log.info("[DispatcherServlet] view found: {}", viewName);
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewName);
-            requestDispatcher.forward(request, response);
+            for (ViewResolver viewResolver : viewResolvers) {
+                View view = viewResolver.resolveViewName(viewName);
+                view.render(new HashMap<>(), request, response);
+            }
 
         } catch (Exception e) {
             log.error("exception occurred: [{}]", e.getMessage(), e);
