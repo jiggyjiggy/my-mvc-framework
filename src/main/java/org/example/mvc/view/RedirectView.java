@@ -8,10 +8,8 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 public class RedirectView implements View {
-    private static final Logger log = LoggerFactory.getLogger(RedirectView.class);
-
     public static final String DEFAULT_REDIRECT_PREFIX = "redirect:";
-
+    private static final Logger log = LoggerFactory.getLogger(RedirectView.class);
     private final String name;
 
     public RedirectView(String name) {

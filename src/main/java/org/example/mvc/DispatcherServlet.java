@@ -1,6 +1,5 @@
 package org.example.mvc;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -41,7 +40,8 @@ public class DispatcherServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("[DispatcherServlet] service started");
         try {
-            Controller handler = rmhm.findHandler(new HandlerKey(RequestMethod.valueOf(request.getMethod()), request.getRequestURI()));            log.info("[DispatcherServlet] handler found: {}", handler.getClass().getName());
+            Controller handler = rmhm.findHandler(new HandlerKey(RequestMethod.valueOf(request.getMethod()), request.getRequestURI()));
+            log.info("[DispatcherServlet] handler found: {}", handler.getClass().getName());
             String viewName = handler.handleRequest(request, response);
             log.info("[DispatcherServlet] view found: {}", viewName);
 
