@@ -15,6 +15,9 @@ dependencies {
     implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.0-M19")
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0-M19")
 
+    implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0")
+    implementation("org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.0")
+
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
