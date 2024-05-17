@@ -4,6 +4,7 @@ import org.example.mvc.controller.Controller;
 import org.example.mvc.controller.ForwardController;
 import org.example.mvc.controller.HomeController;
 import org.example.mvc.controller.RequestMethod;
+import org.example.mvc.controller.UserCreateController;
 import org.example.mvc.controller.UserListController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ public class RequestMappingHandlerMapping {
         mappings.put(new HandlerKey(RequestMethod.GET, "/"), new HomeController());
         mappings.put(new HandlerKey(RequestMethod.GET, "/users"), new UserListController());
         mappings.put(new HandlerKey(RequestMethod.GET, "/user/form"), new ForwardController("/user/form.jsp"));
+        mappings.put(new HandlerKey(RequestMethod.POST, "/users"), new UserCreateController());
     }
 
     public Controller findHandler(HandlerKey handlerKey) {
