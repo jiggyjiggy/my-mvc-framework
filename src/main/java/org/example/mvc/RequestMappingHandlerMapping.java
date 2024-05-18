@@ -2,7 +2,6 @@ package org.example.mvc;
 
 import org.example.mvc.controller.Controller;
 import org.example.mvc.controller.ForwardController;
-import org.example.mvc.controller.HomeController;
 import org.example.mvc.controller.RequestMethod;
 import org.example.mvc.controller.UserCreateController;
 import org.example.mvc.controller.UserListController;
@@ -18,7 +17,6 @@ public class RequestMappingHandlerMapping implements HandlerMapping {
     private Map<HandlerKey, Controller> mappings = new HashMap<>();
 
     void init() {
-        mappings.put(new HandlerKey(RequestMethod.GET, "/"), new HomeController());
         mappings.put(new HandlerKey(RequestMethod.GET, "/users"), new UserListController());
         mappings.put(new HandlerKey(RequestMethod.GET, "/user/form"), new ForwardController("/user/form"));
         mappings.put(new HandlerKey(RequestMethod.POST, "/users"), new UserCreateController());
