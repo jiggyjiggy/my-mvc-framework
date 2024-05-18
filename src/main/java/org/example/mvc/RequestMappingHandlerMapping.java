@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RequestMappingHandlerMapping {
+public class RequestMappingHandlerMapping implements HandlerMapping {
     private static final Logger log = LoggerFactory.getLogger(RequestMappingHandlerMapping.class);
 
     private Map<HandlerKey, Controller> mappings = new HashMap<>();
