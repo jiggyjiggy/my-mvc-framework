@@ -33,9 +33,11 @@ spring이 제공하는 유연한 프레임워크 구조를 제작해보자 <br>
 ### annotation 기반으로, 결합도 줄이기 
 - 리플렉션 라이브러리를 이용하여 구현
 
-## 핵심 코드 (많은 부분 생략)
+## 핵심 코드 
+src/main/java/org/example/mvc/DispatcherServlet.java
+```java
+// 많은 부분 생략되어있음
 
-```java 
 RequestMethod requestMethod = RequestMethod.valueOf(request.getMethod());
 
 Object handler = handlerMappings.stream()
