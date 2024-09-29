@@ -56,6 +56,13 @@ for (ViewResolver viewResolver : viewResolvers) {
     view.render(modelAndView.getModel(), request, response);
 }
 ```
+---
+
+## 간단한 동작 확인 화면
+
+https://github.com/user-attachments/assets/6ecfba63-d72c-4dd8-9a6c-dea82ce8cad4
+
+- 회원가입, redirect로 가입된 회원 목록 view처리
 
 ---
 
@@ -68,3 +75,6 @@ for (ViewResolver viewResolver : viewResolvers) {
 ## Reflection API
 - 힙 영역에 로드되어 있는, 클래스 타입의 개체를 통해 필드, 메서드, 생성자를 접근제어자와 상관없이 사용할 수 있도록 지원하는 API
 - 컴파일타임이 아닌 런타임에 동적으로 특정 클래스의 정보를 추출가능하다
+
+---
+
